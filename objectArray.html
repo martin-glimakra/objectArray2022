@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objekt & Array</title>
+</head>
+<body>
+    <h1>Objekt & Array</h1>
+    <script>
+
+        // objekt används för att lagra komplex data
+
+        let pen = {
+            type: "ballpoint",
+            color: "blue",
+            brand: "Bic"
+        };
+
+        //Så här ser det ut när man loggar ut ett helt objekt
+        console.log(pen);
+        
+        //För att komma åt delar av ett objekt används .
+        console.log(pen.type);  // "ballpoint"
+        console.log(pen.color); // "blue"
+        console.log(pen.brand); // "Bic"
+
+        // Det är möjligt att ändra en del av ett objekt utan att ändra hela 
+        pen.color = 'brown'
+        console.log(pen.color); // "brown"
+        console.log(pen.brand); // "Bic"
+
+        //Det gå att lägga till fler properties i ett objekt i efterhand
+        pen.price = "2.5"; // Set the pen price property
+        console.log(pen);
+
+        // Det går precis som med andra variabler att skriva över objektet med något annat
+        pen = 44
+        console.log(pen.color) //undefined eftersom pen nu innehåller ett nummer istället för att innehålla ett objekt
+        console.log(pen) // 44
+
+
+        // Exempel
+
+        let productOne = {
+            title: 'tShirt',
+            size: 'M',
+            price: 50,
+            inStock: false
+        };
+
+        let productTwo = {
+            title: 'Jeans',
+            size: 'L',
+            price: 60,
+            inStock: true
+        };
+
+        function kontrolleraLager (nuvarandeProdukt) {
+            if(nuvarandeProdukt.inStock) {
+                alert('Kom och köp ' + nuvarandeProdukt.title + 'Den kostar: ' + nuvarandeProdukt.price + 'kr');
+            }
+            else {
+                console.log(nuvarandeProdukt.title + ' finns inte i lager');
+            }
+        };
+
+        // Efterom productTwo.inStock är true körs rad 62
+        kontrolleraLager(productTwo);
+
+        // Efterom productOne.inStock är false körs rad 65
+        kontrolleraLager(productOne);
+
+
+
+        //Array används också för att lagra komplex data.
+        let nameArray = ['Stefan', 'Lennart'];
+        console.log('nameArray[0]', nameArray[0]); // loggar ut Stefan
+        console.log('nameArray[1]', nameArray[1]); // loggar ut Lennart
+
+        nameArray[1] = 'Bo'; // Det går också i arrayer att skriva över data
+
+        console.log('nameArray[1]', nameArray[1]); // loggar nu ut Bo
+
+
+        for (let i = 0; i < nameArray.length; i++) {
+            console.log(nameArray[i]); // loggar ut hela arrayen. Först stefan sedan Bo
+        };
+
+        // Verklighettroget exempel
+
+        let productThree = {
+            title: 'Shorts',
+            price: 70,
+            inStock: false
+        };
+
+        let productFour = {
+            title: 'Sweater',
+            price: 80,
+            inStock: true
+        };
+
+        let arrayOfProducts = [productThree, productFour]; // Det är mycket vanligt att data förpackas som en array av objekt.
+        for (let i = 0; i < arrayOfProducts.length; i++) {
+            kontrolleraLager(arrayOfProducts[i]) // Kör funktionen kontrolleraLager med alla objekt i arrayOfProducts i ordning.
+        };
+    </script>
+</body>
+</html>
